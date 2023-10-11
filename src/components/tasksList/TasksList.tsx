@@ -1,10 +1,11 @@
+import { TasksListProps } from "../../types/types";
 import TasksItem from "../tasksItem/TasksItem";
 
-function TasksList() {
+function TasksList({ formChange, modalOpen }: TasksListProps) {
   return (
     <>
       <ul>
-        <TasksItem />
+        <TasksItem formChange={formChange} modalOpen={modalOpen} />
       </ul>
     </>
   );

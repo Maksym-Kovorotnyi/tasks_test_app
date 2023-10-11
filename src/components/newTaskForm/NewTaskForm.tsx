@@ -6,6 +6,7 @@ function NewTaskForm() {
   const dispatch = useDispatch();
 
   function handleFormSubmit(e: any): void {
+    e.preventDefault();
     dispatch(
       addTask({
         id: nanoid(),
@@ -14,6 +15,7 @@ function NewTaskForm() {
         status: false,
       })
     );
+    e.currentTarget.reset();
   }
   return (
     <>
@@ -22,7 +24,7 @@ function NewTaskForm() {
           <input type="text" name="title" required />
         </label>
         <label htmlFor="description">
-          <input type="text" name="description" required />
+          <textarea name="description" rows={10} cols={50} />
         </label>
         <button type="submit">Create</button>
       </form>
