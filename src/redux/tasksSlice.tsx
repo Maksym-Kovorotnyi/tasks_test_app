@@ -25,6 +25,7 @@ const taksSlice = createSlice({
       state.tasksList[action.payload.indexToChange] =
         action.payload.changedTask;
     },
+    changeTaskStatus(state, action: PayloadAction<boolean>) {},
   },
 });
 
