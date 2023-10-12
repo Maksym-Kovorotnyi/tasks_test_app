@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, Task } from "../../types/types";
 import { changeTask } from "../../redux/tasksSlice";
+import { Button, Form } from "react-bootstrap";
 
 function EditForm() {
   const dispatch = useDispatch();
@@ -27,15 +28,31 @@ function EditForm() {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="title">
-          <input type="text" name="title" defaultValue={taskObj[0].title} />
-        </label>
-        <label htmlFor="description">
-          <textarea name="description" defaultValue={taskObj[0].description} />
-        </label>
-        <button type="submit">Accept changes</button>
-      </form>
+      <Form onSubmit={handleFormSubmit} style={{ padding: "20px" }}>
+        <Form.Group controlId="title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            name="title"
+            defaultValue={taskObj[0].title}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="description">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={10}
+            name="description"
+            defaultValue={taskObj[0].description}
+            style={{ resize: "none", marginBottom: "10px" }}
+          />
+        </Form.Group>
+
+        <Button variant="outline-info" type="submit">
+          Accept changes
+        </Button>
+      </Form>
     </>
   );
 }

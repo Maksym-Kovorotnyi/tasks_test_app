@@ -7,6 +7,10 @@ import {
   UnfulfilledTask,
 } from "../iconsComponents/IconsComponents";
 import { changeTask } from "../../redux/tasksSlice";
+import ListGroup from "react-bootstrap/ListGroup";
+import Card from "react-bootstrap/Card";
+import Stack from "react-bootstrap/Stack";
+import { CSSProperties } from "react";
 
 function TasksItem({ formChange, modalOpen }: TasksListProps) {
   const tasksList = useSelector((state: RootState) => state.tasksList);
@@ -14,31 +18,69 @@ function TasksItem({ formChange, modalOpen }: TasksListProps) {
 
   function handleTaskFullfiled(e: any) {
     const id = e.currentTarget.id;
-    let changeObjStatus;
-    tasksList?.map((obj) => {
-      if (obj.id === id) {
-        changeObjStatus = { ...obj, status: !obj.status };
-      }
-    });
-    const indexToChange = tasksList.findIndex((task) => task.id === id);
-    dispatch(
-      changeTask({
-        indexToChange,
-        changedTask: changeObjStatus,
-      })
-    );
+    let changeObjStatus: Task = {
+      id: "",
+      title: "",
+      description: "",
+      status: false,
+    };
+    if (e.target.localName === "svg" || e.target.localName === "path") {
+      tasksList?.map((obj) => {
+        if (obj.id === id || obj.id === null || obj.id === undefined) {
+          changeObjStatus = { ...obj, status: !obj.status };
+        }
+        return null;
+      });
+      const indexToChange = tasksList.findIndex((task) => task.id === id);
+      dispatch(
+        changeTask({
+          indexToChange,
+          changedTask: changeObjStatus,
+        })
+      );
+    }
   }
+
+  const customItemGroupStyles: CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+    width: "400px",
+    padding: "20px",
+  };
   return (
     <>
       {tasksList?.map((task: Task) => {
         return (
-          <li key={task.id} id={task.id} onClick={handleTaskFullfiled}>
+          <ListGroup.Item
+            key={task.id}
+            id={task.id || ""}
+            onClick={handleTaskFullfiled}
+            style={customItemGroupStyles}
+          >
             {task.status ? <FulfilledTask /> : <UnfulfilledTask />}
-            <h2>{task.title}</h2>
-            <p>{task.description}</p>
-            <DeleteButton />
-            <EditButton formChange={formChange} modalOpen={modalOpen} />
-          </li>
+            <Card.Subtitle
+              style={{
+                overflowWrap: "break-word",
+                wordWrap: "break-word",
+              }}
+              as="h2"
+            >
+              {task?.title}
+            </Card.Subtitle>
+            <Card.Text
+              style={{
+                overflowWrap: "break-word",
+                wordWrap: "break-word",
+              }}
+            >
+              {task?.description}
+            </Card.Text>
+            <Stack direction="horizontal" gap={3}>
+              <DeleteButton />
+              <EditButton formChange={formChange} modalOpen={modalOpen} />
+            </Stack>
+          </ListGroup.Item>
         );
       })}
     </>

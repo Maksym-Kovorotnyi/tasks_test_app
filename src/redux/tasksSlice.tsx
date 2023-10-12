@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Task } from "../types/types";
+import { ChangeTaskProp, Task } from "../types/types";
 
 const tasksInitialState = {
   tasksList: [] as Task[],
@@ -21,13 +21,29 @@ const taksSlice = createSlice({
     findTask(state, action: PayloadAction<string>) {
       state.idToChange = action.payload;
     },
-    changeTask(state, action: PayloadAction<any>) {
+    changeTask(state, action: PayloadAction<ChangeTaskProp>) {
       state.tasksList[action.payload.indexToChange] =
         action.payload.changedTask;
     },
-    changeTaskStatus(state, action: PayloadAction<boolean>) {},
+    sortCompletedTasks(state) {
+      state.tasksList.sort((a, b) =>
+        a.status === b.status ? 0 : a.status ? -1 : 1
+      );
+    },
+    sortUncompletedTasks(state) {
+      state.tasksList.sort((a, b) =>
+        a.status === b.status ? 0 : a.status ? 1 : -1
+      );
+    },
   },
 });
 
 export const tasksReducer = taksSlice.reducer;
-export const { addTask, deleteTask, findTask, changeTask } = taksSlice.actions;
+export const {
+  addTask,
+  deleteTask,
+  findTask,
+  changeTask,
+  sortCompletedTasks,
+  sortUncompletedTasks,
+} = taksSlice.actions;
