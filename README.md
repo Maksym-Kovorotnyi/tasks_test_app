@@ -1,46 +1,20 @@
-# Getting Started with Create React App
+Звітний застосунок "Task Manager" - це простий і зручний інструмент для ведення списку завдань та управління ними. За його допомогою ви можете створювати, редагувати, видаляти та відзначати завдання як виконані. Цей застосунок створений на базі технологій React та Redux, і він надає можливість легко керувати вашим списком завдань.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Основні функції:
+Додавання завдань: Ви можете додавати нові завдання за допомогою форми вводу. Кожне завдання має назву та опис.
 
-## Available Scripts
+Редагування завдань: Ви можете редагувати існуючі завдання, змінюючи їх назву та опис.
 
-In the project directory, you can run:
+Видалення завдань: Застосунок дозволяє вам видаляти завдання, які більше не потрібні.
 
-### `npm start`
+Позначення завдань як виконаних або невиконаних: Ви можете відзначити завдання як виконані або невиконані, натискаючи на відповідний піктограми.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Сортування завдань: Застосунок має можливість сортувати ваш список завдань за статусом (виконані або невиконані).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Застосунок "Task Manager" розроблений на React-Redux, що дозволяє зручно керувати станом додатка та ефективно оновлювати інтерфейс. Він також використовує бібліотеку React-Bootstrap для створення стильного та відзивчивого дизайну.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Як використовувати "Task Manager":
+Додайте нове завдання, вказавши його назву та опис.
+Редагуйте або видаліть завдання за потреби.
+Позначайте завдання як виконані або невиконані.
+Сортуйте ваш список завдань за статусом.
